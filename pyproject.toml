@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "causal-sidecar"
-version = "0.1.0"
+version = "0.2.0"
 description = "DoWhy/EconML/statsmodels sidecar for the AgeDefy causal-inference-agent"
 authors = ["Kryst Investments LLC <platform@kryst-investments.com>"]
 license = "Apache-2.0"
@@ -16,12 +16,15 @@ numpy = "^2.1"
 pandas = "^2.2"
 scipy = "^1.14"
 statsmodels = "^0.14"
-dowhy = "^0.12"
-econml = "^0.15"
+dowhy = { version = ">=0.11,<0.13", optional = true }
+econml = { version = ">=0.15,<0.16", optional = true }
 networkx = "^3.3"
 opentelemetry-api = "^1.27"
 opentelemetry-sdk = "^1.27"
 opentelemetry-instrumentation-fastapi = "^0.48b0"
+
+[tool.poetry.extras]
+heavy = ["dowhy", "econml"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3"
