@@ -16,15 +16,10 @@ numpy = "^2.1"
 pandas = "^2.2"
 scipy = "^1.14"
 statsmodels = "^0.14"
-dowhy = { version = ">=0.11,<0.13", optional = true }
-econml = { version = ">=0.15,<0.16", optional = true }
 networkx = "^3.3"
 opentelemetry-api = "^1.27"
 opentelemetry-sdk = "^1.27"
 opentelemetry-instrumentation-fastapi = "^0.48b0"
-
-[tool.poetry.extras]
-heavy = ["dowhy", "econml"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3"
