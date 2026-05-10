@@ -25,6 +25,8 @@ jobs:
       - name: Lint
         run: ruff check app tests
       - name: Test
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: pytest -q
 
   docker:
