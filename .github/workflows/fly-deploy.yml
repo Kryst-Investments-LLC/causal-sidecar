@@ -1,0 +1,16 @@
+name: fly-deploy
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency: deploy-causal-sidecar
+    steps:
+      - uses: actions/checkout@v4
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only --image ghcr.io/kryst-investments-llc/causal-sidecar:${GITHUB_REF_NAME#v}
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
